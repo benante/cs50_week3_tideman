@@ -116,6 +116,20 @@ bool vote(int rank, string name, int ranks[])
 void record_preferences(int ranks[])
 {
     // TODO
+    // EXPLANATION: A, B, and C. If a voter ranks them as A > C > B, the ranks array for this voter would be [0, 2, 1], meaning candidate 0 (A) is ranked first, candidate 2 (C) is ranked second, and candidate 1 (B) is ranked third.
+    // Now, we update the preferences array based on this voter’s ranks. We increase preferences[0][2] and preferences[0][1] by 1 because this voter prefers candidate 0 over candidates 2 and 1. Similarly, we increase preferences[2][1] by 1 because the voter prefers candidate 2 over candidate 1.
+
+    // For each candidate loop through the rank array and add 1 for each candidate that come after them (position j > i) in the array
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if (j > i)
+            {
+                preferences[ranks[i]][ranks[j]]++;
+            }
+        }
+    }
 
     return;
 }
