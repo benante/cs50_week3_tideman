@@ -138,6 +138,27 @@ void record_preferences(int ranks[])
 void add_pairs(void)
 {
     // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+
+            if (preferences[i][j] - preferences[j][i] > 0)
+            {
+                pairs[i].winner = i;
+                pairs[j].loser = j;
+                pair_count++;
+                printf("Winner: %d vs Loser: %d\n - Pair Count: %i\n", pairs[i].winner, pairs[j].loser, pair_count);
+            }
+            else if (preferences[i][j] - preferences[j][i] < 0)
+            {
+                pairs[i].winner = j;
+                pairs[j].loser = i;
+                pair_count++;
+                printf("Winner: %d vs Loser: %d\n - Pair Count: %i\n", pairs[i].winner, pairs[j].loser, pair_count);
+            }
+        }
+    }
     return;
 }
 
