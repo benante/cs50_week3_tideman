@@ -98,6 +98,7 @@ int main(int argc, string argv[])
 
 // Update ranks given a new vote
 bool vote(int rank, string name, int ranks[])
+
 {
     // TODO
     // Loop through candidates names and cross check them with names voted. If name exist, update rank array
@@ -140,22 +141,20 @@ void add_pairs(void)
     // TODO
     for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = 0; j < candidate_count; j++)
+        for (int j = i + 1; j < candidate_count; j++)
         {
 
             if (preferences[i][j] - preferences[j][i] > 0)
             {
-                pairs[i].winner = i;
-                pairs[j].loser = j;
+                pairs[pair_count].winner = i;
+                pairs[pair_count].loser = j;
                 pair_count++;
-                printf("Winner: %d vs Loser: %d\n - Pair Count: %i\n", pairs[i].winner, pairs[j].loser, pair_count);
             }
             else if (preferences[i][j] - preferences[j][i] < 0)
             {
-                pairs[i].winner = j;
-                pairs[j].loser = i;
+                pairs[pair_count].winner = j;
+                pairs[pair_count].loser = i;
                 pair_count++;
-                printf("Winner: %d vs Loser: %d\n - Pair Count: %i\n", pairs[i].winner, pairs[j].loser, pair_count);
             }
         }
     }
