@@ -165,6 +165,28 @@ void add_pairs(void)
 void sort_pairs(void)
 {
     // TODO
+    // Loop through pairs array
+    for (int i = 0; i < pair_count; i++)
+    {
+        // Set temporary score and pair
+        int highestScore = 0;
+        pair highest;
+        // Compare each pairs value (taken from preferences array) with pairs[i]
+        for (int j = i + 1; j < pair_count; j++)
+        {
+            // If value is higher then highestScore, set highestScore to that value
+            if (preferences[pairs[i].winner][pairs[i].loser] > highestScore)
+            {
+                highestScore = preferences[pairs[i].winner][pairs[i].loser];
+                // Change highest value to current [j] pairs element (with higher value)
+                highest = pairs[j];
+                // Set highest value [j] pair with (lower value) [i] pair
+                pairs[j] = pairs[i];
+            }
+            // Set [i] pair value with highest value
+            pairs[i] = highest;
+        }
+    }
     return;
 }
 
