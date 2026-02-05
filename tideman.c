@@ -190,10 +190,48 @@ void sort_pairs(void)
     return;
 }
 
+bool isCycle(int winner_candidate, int current_candidate)
+{
+    // Base case: if the winner candidate is also current candidate (loser), there's a cycle ==> TRUE
+    if (winner_candidate == current_candidate)
+        return true;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // Investigate further down to check if loser has a link to winner in its path comparing it to other candidates
+
+        // If there's a connection between current candidate (loser) and i (th) candidate
+        if (locked[current_candidate][i])
+        {
+            // Repeat action with winner and i (th) candidate
+            if (isCycle(winner_candidate, i))
+                return true;
+        }
+    }
+    return false;
+}
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
+
     // TODO
+    // for (int i = 0; i < pair_count; i++)
+    // {
+    //     for (int j = 0; j < pair_count; j++)
+    //     {
+    //         if (pairs[i].winner &&)
+    //         {
+    //             printf("Winner\n");
+    //             locked[pairs[i].winner][pairs[i].loser] = true;
+    //         }
+
+    //         else
+    //         {
+    //             locked[i][j] = false;
+    //         }
+    //         printf("%i - %i: %d\n ", i, j, locked[i][j]);
+    //     }
+    // }
+
     return;
 }
 
