@@ -202,7 +202,7 @@ bool isCycle(int winner_candidate, int current_candidate)
         // If there's a connection between current candidate (loser) and i (th) candidate
         if (locked[current_candidate][i])
         {
-            // Repeat action with winner and i (th) candidate
+            // Repeat action with winner and i(th) candidate
             if (isCycle(winner_candidate, i))
                 return true;
         }
@@ -212,25 +212,21 @@ bool isCycle(int winner_candidate, int current_candidate)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-
     // TODO
-    // for (int i = 0; i < pair_count; i++)
-    // {
-    //     for (int j = 0; j < pair_count; j++)
-    //     {
-    //         if (pairs[i].winner &&)
-    //         {
-    //             printf("Winner\n");
-    //             locked[pairs[i].winner][pairs[i].loser] = true;
-    //         }
+    // Iterate through each pair and check whether there' s a cycle. If so, set lock to false
+    for (int i = 0; i < pair_count; i++)
+    {
+        if (!isCycle(pairs[i].winner, pairs[i].loser))
+        {
 
-    //         else
-    //         {
-    //             locked[i][j] = false;
-    //         }
-    //         printf("%i - %i: %d\n ", i, j, locked[i][j]);
-    //     }
-    // }
+            locked[pairs[i].winner][pairs[i].loser] = true;
+        }
+
+        else
+        {
+            locked[pairs[i].winner][pairs[i].loser] = false;
+        }
+    }
 
     return;
 }
@@ -239,5 +235,6 @@ void lock_pairs(void)
 void print_winner(void)
 {
     // TODO
+
     return;
 }
