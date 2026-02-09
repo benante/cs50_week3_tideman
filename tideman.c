@@ -235,6 +235,27 @@ void lock_pairs(void)
 void print_winner(void)
 {
     // TODO
+    // Iterate through each element and find the one with no arrows/edges pointing to.
+    for (int i = 0; i < candidate_count; i++)
+    {
+        bool isWin = true;
+        // Compare i with other array elements
+        for (int j = 0; j < candidate_count; j++)
+        {
+            //  [j][i] so that you check this way: [0][0], [1][0], [2][0]
+            // i MUST BE SECOND INDEX BECAUSE IT IS THE CANDIDATE POINTED AT RATHER THEN POINTING TO. Ex: [0][1] false means i points to j
+            if (locked[j][i] == true)
+            {
+                // If any of the elements are not true, switch the value of isWin to false
+                isWin = false;
+            }
+        }
+        if (isWin)
+        {
+            printf("%i\n", candidates[i]);
+            break;
+        }
+    }
 
     return;
 }
