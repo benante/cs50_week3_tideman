@@ -1,7 +1,7 @@
 **Note:**
 > This problem set is considered to be the most (or the second) most difficult problem set of the course (according to the internet).
 > It comes with a distribution code already, so my parts are only the functions preceded by the // TODO comments.
-> I found the recursion function for lock_pair extremely hard to understand, I have used AI to help me out on this.
+> I found the recursion function for lock_pair extremely hard to understand, I have used AI indications (no code) to help me out on this.
 >
 > Command for distribution code: ``` wget https://cdn.cs50.net/2026/x/psets/3/tideman.zip ```
 
